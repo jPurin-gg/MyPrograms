@@ -1,0 +1,53 @@
+\documentclass[titlepage,a4paper]{jsarticle}
+\usepackage{../../../sty/import}% 各種パッケージインポート
+\usepackage{../../../sty/title}% タイトルページの変更
+\renewcommand{\thesection}{問\arabic{section}}
+\setcounter{section}{4}
+%% タイトルページの変数
+% レポートタイトル
+\title{6月20日課題}
+% 提出日
+\expdate{\today}
+% 科目名
+\subject{データベースと応用システム}
+% 分野
+\class{情報経営システム工学分野}
+% 学年
+\grade{B4}
+% 学籍番号
+\mynumber{24336488}
+% 記述者
+\author{本間三暉}
+
+\begin{document}
+% titleページ作成
+\maketitle
+\section{トランザクションおよびトランザクションが満たすべき特性について説明しなさい．}
+
+トランザクションとは，ユーザにとって意味のある一連の処理のまとまりであり，データベース上では一単位の処理として扱われる．例として，銀行振込においては，出金と入金の2つの操作を1つのトランザクションとして処理する．
+
+トランザクションが満たすべき特性はACID特性と呼ばれ，以下の4つである．
+\begin{itemize}
+  \item \textbf{原子性（Atomicity）}：トランザクション内の処理はすべて成功するか，すべて失敗するかのどちらかでなければならない．
+  \item \textbf{一貫性（Consistency）}：処理の前後でデータベースの整合性が保たれていなければならない．
+  \item \textbf{独立性（Isolation）}：他のトランザクションの影響を受けずに実行される必要がある．
+  \item \textbf{耐久性（Durability）}：一度コミットされた処理結果は障害が発生しても保持される．
+\end{itemize}
+
+\section{トランザクションの原子性を確保するための機能としてコミットメント制御がある．コミットおよびロールバックについて説明しなさい．}
+
+トランザクションの原子性を保証するために，\textbf{コミットメント制御}が用いられる．これはトランザクションが完全に成功したか，あるいは完全に失敗したかを判定し，データの整合性を保つための制御である．
+
+\begin{itemize}
+  \item \textbf{コミット（commit）}：トランザクションが正常に完了したとき，その処理結果をデータベースに確定させる操作である．更新内容は永続的に保存される．
+  \item \textbf{ロールバック（rollback）}：トランザクションが途中で失敗したとき，それまでの処理をすべて取り消し，データベースを元の状態に戻す操作である．
+\end{itemize}
+
+% 参考文献（Web上の資料）
+\begin{thebibliography}{99}
+  \bibitem{}データベースと応用システムの講義資料
+  \bibitem{qiita_transaction}
+  Qiita, トランザクションの概念とACID特性についての解説,\\
+  \url{https://qiita.com/hatsu/items/4e699ad50651a6a30407}
+\end{thebibliography}
+\end{document}
