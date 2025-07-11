@@ -1,9 +1,9 @@
-This is e-upTeX, Version 3.141592653-p4.1.1-u1.30-230214-2.6 (utf8.euc) (TeX Live 2024) (preloaded format=platex 2024.6.19)  27 JUN 2025 11:48
+This is e-upTeX, Version 3.141592653-p4.1.1-u1.30-230214-2.6 (utf8.euc) (TeX Live 2024) (preloaded format=platex 2024.6.19)  11 JUL 2025 10:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**/Users/honma_mitsuki/作業/MyPrograms/技大/B4_1学期/データベース/課題3/kadai3
-(/Users/honma_mitsuki/作業/MyPrograms/技大/B4_1学期/データベース/課題3/kadai3.tex
+**/Users/honma_mitsuki/作業/MyPrograms/技大/B4_1学期/データベース/課題4/kadai4
+(/Users/honma_mitsuki/作業/MyPrograms/技大/B4_1学期/データベース/課題4/kadai4.tex
 pLaTeX2e <2023-02-14>+1, based on
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -480,8 +480,8 @@ File: l3backend-dvips.def 2024-02-20 L3 backend support: dvips
 \g__pdf_backend_annotation_int=\count331
 \g__pdf_backend_link_int=\count332
 \g__pdf_backend_link_sf_int=\count333
-) (./kadai3.aux)
-\openout1 = `kadai3.aux'.
+) (./kadai4.aux)
+\openout1 = `kadai4.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
 LaTeX Font Info:    ... okay on input line 22.
@@ -546,9 +546,9 @@ Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 Package hyperref Info: Link coloring OFF on input line 22.
-(./kadai3.out) (./kadai3.out)
+(./kadai4.out) (./kadai4.out)
 \@outlinefile=\write3
-\openout3 = `kadai3.out'.
+\openout3 = `kadai4.out'.
 
  (/usr/local/texlive/2024/texmf-dist/tex/latex/translations/translations-basic-dictionary-english.trsl
 File: translations-basic-dictionary-english.trsl (english translation file `translations-basic-dictionary')
@@ -603,40 +603,25 @@ LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
  [1
 
 ]
-LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 27.
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 27.
-LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 27.
-LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 27.
-LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 11.53198pt on input line 30.
-LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 11.53198pt on input line 30.
- [1]
-LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 4.805pt on input line 81.
-LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 4.805pt on input line 81.
- [2] (./kadai3.aux)
+(Font)              scaled to size 9.60999pt on input line 31.
+ [1] [2] (./kadai4.aux)
  ***********
 pLaTeX2e <2023-02-14>+1, based on
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
-Package rerunfilecheck Info: File `kadai3.out' has not changed.
-(rerunfilecheck)             Checksum: F9DE7272E59FBDB39A0A340EF9574A37;1017.
+Package rerunfilecheck Info: File `kadai4.out' has not changed.
+(rerunfilecheck)             Checksum: 4F5B193D89856879F91B887184993A67;2038.
  )
 (\end occurred when \ifx on line 4 was incomplete) 
 Here is how much of TeX's memory you used:
- 18314 strings out of 474774
- 347934 string characters out of 5758801
+ 18297 strings out of 474774
+ 347736 string characters out of 5758801
  1927032 words of memory out of 5000000
- 40461 multiletter control sequences out of 15000+600000
- 573490 words of font info for 106 fonts, out of 8000000 for 9000
+ 40449 multiletter control sequences out of 15000+600000
+ 571157 words of font info for 95 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
- 87i,6n,93p,398b,945s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 87i,6n,93p,720b,956s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on kadai3.dvi (3 pages, 11464 bytes).
+Output written on kadai4.dvi (3 pages, 10120 bytes).

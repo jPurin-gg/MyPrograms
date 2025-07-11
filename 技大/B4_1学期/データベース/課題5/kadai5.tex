@@ -1,0 +1,51 @@
+\documentclass[titlepage,a4paper]{jsarticle}
+\usepackage{../../../sty/import}% 各種パッケージインポート
+\usepackage{../../../sty/title}% タイトルページの変更
+\renewcommand{\thesection}{問\arabic{section}}
+\setcounter{section}{15}
+%% タイトルページの変数
+% レポートタイトル
+\title{7月11日課題}
+% 提出日
+\expdate{\today}
+% 科目名
+\subject{データベースと応用システム}
+% 分野
+\class{情報経営システム工学分野}
+% 学年
+\grade{B4}
+% 学籍番号
+\mynumber{24336488}
+% 記述者
+\author{本間三暉}
+
+\begin{document}
+% titleページ作成
+\maketitle
+
+\section{分散データベースにおいて，垂直分散と水平分散のそれぞれの利点と欠点を説明しなさい．}
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|p{6cm}|p{6cm}|}
+\hline
+分散方式 & 利点 & 欠点 \\ \hline
+垂直分散（マスター＋レプリカ） &
+\begin{itemize}\item 更新経路が単純で設計が容易である．\item 読み取り負荷をレプリカに逃がせるため参照性能を高めやすい．\end{itemize} &
+\begin{itemize}\item 書き込みがマスターに集中しボトルネックになる．\item マスター障害時に全体停止へつながりやすい．\end{itemize} \\ \hline
+水平分散（シャーディング） &
+\begin{itemize}\item ノード追加で容易にスケールアウトできる．\item ノード障害が局所化し可用性が高い．\end{itemize} &
+\begin{itemize}\item データ分割規則と問い合わせ最適化が複雑である．\item 複数ノードをまたぐトランザクションの整合性維持が難しい．\end{itemize} \\ \hline
+\end{tabular}
+\end{table}
+
+\bigskip
+垂直分散はシンプルだが単一マスターに依存する．水平分散は拡張性と可用性が高いが設計と運用が複雑である．ワークロードと可用性要件を踏まえて適切に選択すべきである．
+
+\section{分散データベースの透過性について説明し，透過性の要素を列挙しなさい．}
+
+\section{分散データベースの1相コミットメント制御の問題点と2相コミットメント制御の利点を説明しなさい．}
+
+\section{銀行の残高を記録する分散データベースをレプリケーションにより負荷分散する場合，望ましい方法を説明しなさい．}
+
+
+\end{document}
