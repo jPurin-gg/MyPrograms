@@ -1,0 +1,70 @@
+\documentclass[titlepage,a4paper]{jsarticle}
+\usepackage{../../../sty/import}% 各種パッケージインポート
+\usepackage{../../../sty/title}% タイトルページの変更
+\renewcommand{\thesection}{問\arabic{section}}
+\setcounter{section}{19}
+%% タイトルページの変数
+% レポートタイトル
+\title{7月18日課題}
+% 提出日
+\expdate{\today}
+% 科目名
+\subject{データベースと応用システム}
+% 分野
+\class{情報経営システム工学分野}
+% 学年
+\grade{B4}
+% 学籍番号
+\mynumber{24336488}
+% 記述者
+\author{本間三暉}
+
+\begin{document}
+% titleページ作成
+\maketitle
+
+\section{情報検索の代表的なアルゴリズムであるHITS(Hyperlink-Induced Topic Search)とPageRankの共通点を説明しなさい．}
+
+HITS と PageRank はどちらも Web のハイパーリンク構造を解析し，重要度を数値化するリンク解析アルゴリズムである\cite{text}．共通点は以下の三点に整理できる．
+
+\begin{itemize}
+  \item \textbf{リンクグラフ依存}：ページを頂点，リンクを有向辺と見なしてスコアを計算する\cite{hits-blog}\cite{pagerank-blog}．
+  \item \textbf{反復的固有ベクトル計算}：隣接行列に対してパワーイテレーションを行い，固有ベクトル（確率ベクトル）を収束させる\cite{pagerank-blog}．
+  \item \textbf{再帰的スコア定義}：「重要なページから参照されるページは重要」という自己参照的な定義で評価値を決める\cite{hits-blog}\cite{pagerank-blog}．
+\end{itemize}
+
+これらの特性により，両アルゴリズムは Web 規模でもスケーラブルにページ重要度を算出できる．
+
+
+\section{推薦システムの代表的な手法である協調フィルタリングの利点と欠点を説明しなさい．}
+\subsection*{利点}
+\begin{itemize}
+  \item \textbf{コンテンツ独立性}：アイテム属性を解析せず，ユーザ‐アイテム行列のみで機能する\cite{cf-udemy}．
+  \item \textbf{高精度なパーソナライズ}：潜在的な嗜好パターンを学習し，複雑な好みも捉えやすい\cite{cf-udemy}．
+  \item \textbf{ドメイン横断適用}：映画，音楽，EC 商品など多様な領域で実績がある\cite{cf-basic}．
+  \item \textbf{セレンディピティ}：ユーザ自身が気付かなかった関連アイテムを提示しやすい\cite{cf-basic}．
+\end{itemize}
+
+\subsection*{欠点}
+\begin{itemize}
+  \item \textbf{コールドスタート問題}：履歴のない新規ユーザ・アイテムで精度が下がる\cite{cf-udemy}．
+  \item \textbf{スパース行列問題}：大規模カタログでは評価行列が疎で類似計算が難しい\cite{cf-udemy}．
+  \item \textbf{計算コスト増大}：ユーザ数やアイテム数が増えると計算量が増大する\cite{cf-basic}．
+  \item \textbf{人気バイアス／フィルターバブル}：人気アイテムに推薦が偏り，多様性が失われる\cite{cf-basic}．
+  \item \textbf{シリング攻撃の脆弱性}：悪意ある評価により推薦結果がゆがむ恐れがある\cite{cf-udemy}．
+\end{itemize}
+
+以上の利点と欠点を踏まえ，実システムではハイブリッド手法や正則化などを組み合わせて精度と健全性を両立させることが求められる．
+
+\begin{thebibliography}{99}
+\bibitem{text} データベースと応用システムの講義資料
+\bibitem{hits-blog} 分析ノート「HITSアルゴリズム」\\
+\url{https://analytics-note.xyz/graph-theory/hits-algorithm/}
+\bibitem{pagerank-blog} け日記「いまさら学ぶPageRankアルゴリズム」\\
+\url{https://ohke.hateblo.jp/entry/2018/12/29/230000}
+\bibitem{cf-udemy} Udemyメディア「協調フィルタリングって何？商品のおすすめ機能を学ぼう！」\\
+\url{https://udemy.benesse.co.jp/data-science/ai/collaborative-filtering.html}
+\bibitem{cf-basic} FeliCa Networks「協調フィルタリングとは？基本的な考え方や種類を解説」\\
+\url{https://receiptreward.jp/solution/column/collaborativefiltering.html}
+\end{thebibliography}
+\end{document}

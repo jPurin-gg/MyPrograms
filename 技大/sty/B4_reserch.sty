@@ -1,0 +1,139 @@
+% b4midtemplate.sty – LaTeX style file for B4 Intermediate Presentation Manuscript
+% Version: 2025-07-16
+% Author: honma_mitsuki
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{b4midtemplate}[2025/07/16 v1.4 B4 Mid Template]
+
+% ------------------------------------------------------------
+% 使用パッケージ
+% ------------------------------------------------------------
+\RequirePackage{iftex}
+\RequirePackage{geometry}
+\RequirePackage{multicol}
+\RequirePackage{titlesec}
+\RequirePackage{caption}
+\RequirePackage{etoolbox}
+\RequirePackage{fancyhdr}   % ← ヘッダー／フッター用
+
+% ------------------------------------------------------------
+% 余白設定（A4: 上22, 下25, 左右17 mm）
+% ------------------------------------------------------------
+\geometry{
+  a4paper,
+  top=22mm,
+  bottom=25mm,
+  left=17mm,
+  right=17mm,
+  headheight=12pt,   % ヘッダー用に少し高さを確保
+  headsep=10pt,
+  footskip=10pt
+}
+
+% ------------------------------------------------------------
+% 2段組（段間 8 mm）
+% ------------------------------------------------------------
+\AtBeginDocument{%
+  \if@twocolumn\else\twocolumn\fi
+  \setlength{\columnsep}{8mm}}
+
+% ------------------------------------------------------------
+% フォント（和文: MS 明朝，欧文: Times New Roman，本文基準 9 pt）
+% ------------------------------------------------------------
+\makeatletter
+\newcommand{\biv@setfonts}{\fontsize{9pt}{13pt}\selectfont}
+
+\ifLuaTeX
+  \RequirePackage{fontspec}
+  \setmainfont{Times New Roman}[Scale=MatchLowercase]
+  \setmainjfont{MS Mincho}
+  \biv@setfonts
+\else\ifXeTeX
+  \RequirePackage{fontspec}
+  \setmainfont{Times New Roman}[Scale=MatchLowercase]
+  \setmainjfont{MS Mincho}
+  \biv@setfonts
+\else
+  % pLaTeX / upLaTeX 系はデフォルトフォントを使用
+  \biv@setfonts
+\fi\fi
+
+% ------------------------------------------------------------
+% 見出し設定（フォーマット＋行間調整）
+% ------------------------------------------------------------
+\titlespacing*{\section}{0pt}{0.5\baselineskip}{0.4\baselineskip}
+\titlespacing*{\subsection}{0pt}{0.3\baselineskip}{0.2\baselineskip}
+\titlespacing*{\subsubsection}{0pt}{0.3\baselineskip}{0.15\baselineskip}
+
+\titleformat{\section}[hang]{\bfseries}{\thesection}{0.5em}{}
+\titleformat{\subsection}[hang]{\bfseries}{\thesubsection}{0.4em}{}
+\titleformat{\subsubsection}[hang]{\bfseries}{\thesubsubsection}{0.3em}{}
+\renewcommand*{\thesection}{\arabic{section}.}
+\renewcommand*{\thesubsection}{\arabic{section}.\arabic{subsection}}
+
+% ------------------------------------------------------------
+% キャプション
+% ------------------------------------------------------------
+\captionsetup{
+  font={footnotesize},
+  labelfont=bf,
+  justification=centering,
+  labelsep=space}
+
+% ------------------------------------------------------------
+% 段落
+% ------------------------------------------------------------
+\setlength{\parindent}{1em}
+\setlength{\parskip}{0pt}
+
+% ------------------------------------------------------------
+% ヘッダー設定（左寄せに固定文言）
+% ------------------------------------------------------------
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\fontsize{9pt}{11pt}\selectfont 令和7年度\ 情報・経営システム工学分野\ 中間発表}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+
+% ------------------------------------------------------------
+% タイトル情報保持用変数
+% ------------------------------------------------------------
+\def\biv@title{中間発表題目}
+\def\biv@sid{xxxxxxxx}
+\def\biv@name{氏名}
+\def\biv@supervisor{指導教員}
+
+% ------------------------------------------------------------
+% ユーザ設定コマンド
+% ------------------------------------------------------------
+\newcommand{\midpapertitle}[1]{\def\biv@title{#1}}
+\newcommand{\studentid}[1]{\def\biv@sid{#1}}
+\newcommand{\studentname}[1]{\def\biv@name{#1}}
+\newcommand{\supervisor}[1]{\def\biv@supervisor{#1}}
+
+% ------------------------------------------------------------
+% タイトルブロック（中央揃え・段抜き）
+%   ・タイトル 14 pt ／行送り 18 pt
+%   ・情報行     12 pt ／行送り 15 pt
+% ------------------------------------------------------------
+\renewcommand{\maketitle}{%
+  \twocolumn[{%
+    \begin{center}
+      {\fontsize{14pt}{18pt}\selectfont\bfseries \biv@title\par}\vspace{1em}%
+      {\fontsize{12pt}{15pt}\selectfont 学籍番号\ \biv@sid\quad 氏名\ \biv@name\quad 指導教員\ \biv@supervisor\par}%
+      \vspace{1.5em}
+    \end{center}
+  }]}
+
+% ------------------------------------------------------------
+% 参考文献タイトル
+% ------------------------------------------------------------
+\AtBeginDocument{\renewcommand{\refname}{参考文献}}
+
+\makeatother
+
+% ------------------------------------------------------------
+% ここまで
+% ------------------------------------------------------------
+\endinput
