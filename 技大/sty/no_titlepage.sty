@@ -1,0 +1,50 @@
+% no_titlepage.sty -- inline title & metadata at top of first page
+% 2025/07/31 v3.2  (date right, title center, auto capture standard \title/\author)
+% --------------------------------------------------------------
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{no_titlepage}[2025/07/31 Inline heading style v3.2]
+
+% -------- internal storage for user data ----------------------
+\newcommand*\head@expdate{}
+\newcommand*\head@subject{}
+\newcommand*\head@class{}
+\newcommand*\head@grade{}
+\newcommand*\head@mynumber{}
+\newcommand*\head@title{}
+\newcommand*\head@name{}
+
+% -------- user commands ---------------------------------------
+\newcommand{\expdate}[1]{\def\head@expdate{#1}}
+\newcommand{\subject}[1]{\def\head@subject{#1}}
+\newcommand{\class}[1]{\def\head@class{#1}}
+\newcommand{\grade}[1]{\def\head@grade{#1}}
+\newcommand{\mynumber}[1]{\def\head@mynumber{#1}}
+\newcommand{\myname}[1]{\def\head@name{#1}}
+
+% allow both standard \title/\author and custom ones
+\let\orig@title\title
+\renewcommand{\title}[1]{\orig@title{#1}\def\head@title{#1}}
+\let\orig@author\author
+\renewcommand{\author}[1]{\orig@author{#1}\def\head@name{#1}}
+
+% -------- heading construction --------------------------------
+\newcommand{\titinlineMake}{%
+  {\raggedleft\large \head@expdate\par}
+  {\raggedleft\large \head@subject レポート\par}\vskip0.4\baselineskip
+  {\centering\huge \head@title\par}\vskip0.4\baselineskip
+  {\centering\large \head@class\,  \,\head@grade\par}
+    {\centering\large
+    \begin{tabular}{@{}r@{：\ }l@{}}
+      氏名 & \head@name \\
+      学籍番号 & \head@mynumber \\
+    \end{tabular}\par}
+}
+
+% -------- inject into document start --------------------------
+\AtBeginDocument{\titinlineMake}
+
+% suppress default \maketitle
+\providecommand{\maketitle}{}
+
+% ---------------- end of file ---------------------------------
