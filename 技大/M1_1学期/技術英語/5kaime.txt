@@ -1,0 +1,11 @@
+Machine Learning
+
+As technology evolves and the world's population grows, so does the amount of data being generated. Collecting, sorting, and analyzing all of these data can be pretty time-consuming. However that's starting to change with the emergence of something called machine learning.
+
+Machine learning is a type of computer science that allows computer programs to learn and improve all on their own. In the past, computers could only do what we programmed them to do. But with machine learning, they can behave like humans and gain knowledge based on their past experiences. This process can get pretty complicated but here's how it works on a basic level.
+
+Let's say we want a program that can tell the difference between apples and bananas. First we'll give it some labeled pictures of each. The program will then look for patterns in the fruits and start to remember them. It can then use these memories to look at unlabeled pictures of apples and bananas and determine which is which all on its own.
+
+Believe it or not you probably encounter machine learning on a daily basis. Social media sites use it to create your feed based on your preferences and search engines use it to improve the accuracy of their search results. It's also being used on a larger scale. The medical industry is applying machine learning to things like predicting lifespans, organizing patient data and even diagnosing certain diseases.
+
+As with many emerging technologies, there's a concern that machine learning may eliminate certain jobs. This will vary from industry to industry, but it does have the potential to get rid of or change a number of occupations, including drivers, bankers and potentially even certain doctors. While it may have some negative effects, many believe that its positive applications will outweigh them.

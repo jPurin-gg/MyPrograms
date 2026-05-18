@@ -1,0 +1,122 @@
+% answergrid.sty
+\NeedsTeXFormat{LaTeX2e}
+
+\RequirePackage{xparse}
+\RequirePackage{array}
+
+% ===== 設定値 =====
+\newcommand{\AnswerGridCellWidth}{30mm}
+\newcommand{\AnswerGridCellHeight}{32mm}
+
+% ===== 番号表示：(01), (02), ... =====
+\newcommand{\AnswerGridLabel}[1]{%
+  \ifnum#1<10
+    (0#1)%
+  \else
+    (#1)%
+  \fi
+}
+
+% ===== 1マス生成 =====
+% #1 : 問題番号
+% #2 : マスの中の内容
+\newcommand{\AnswerGridCell}[2]{%
+  \parbox[t][\AnswerGridCellHeight][t]{\AnswerGridCellWidth}{%
+    \raggedright
+    \AnswerGridLabel{#1}\par
+    \vspace{1mm}%
+    #2%
+  }%
+}
+
+\ExplSyntaxOn
+
+\seq_new:N \l__answergrid_answers_seq
+
+% {解答1}{解答2}... を順番に読み取って保存する
+\cs_new_protected:Npn \__answergrid_set_answers:n #1
+{
+  \seq_clear:N \l__answergrid_answers_seq
+  \__answergrid_collect:n #1 \q_recursion_tail \q_recursion_stop
+}
+
+\cs_new_protected:Npn \__answergrid_collect:n #1
+{
+  \quark_if_recursion_tail_stop:n {#1}
+  \seq_put_right:Nn \l__answergrid_answers_seq {#1}
+  \__answergrid_collect:n
+}
+
+% n番目の解答を取得．存在しなければ空欄
+\cs_new:Npn \__answergrid_get_answer:n #1
+{
+  \int_compare:nTF
+    { #1 <= \seq_count:N \l__answergrid_answers_seq }
+    { \seq_item:Nn \l__answergrid_answers_seq {#1} }
+    { }
+}
+
+% 表本体
+\cs_new_protected:Npn \__answergrid_print:
+{
+  \begin{center}
+  \setlength{\tabcolsep}{0pt}
+  \begin{tabular}{|*{5}{p{\AnswerGridCellWidth}|}}
+    \hline
+    \AnswerGridCell{1}{\__answergrid_get_answer:n{1}}   &
+    \AnswerGridCell{2}{\__answergrid_get_answer:n{2}}   &
+    \AnswerGridCell{3}{\__answergrid_get_answer:n{3}}   &
+    \AnswerGridCell{4}{\__answergrid_get_answer:n{4}}   &
+    \AnswerGridCell{5}{\__answergrid_get_answer:n{5}}   \\ \hline
+
+    \AnswerGridCell{6}{\__answergrid_get_answer:n{6}}   &
+    \AnswerGridCell{7}{\__answergrid_get_answer:n{7}}   &
+    \AnswerGridCell{8}{\__answergrid_get_answer:n{8}}   &
+    \AnswerGridCell{9}{\__answergrid_get_answer:n{9}}   &
+    \AnswerGridCell{10}{\__answergrid_get_answer:n{10}} \\ \hline
+
+    \AnswerGridCell{11}{\__answergrid_get_answer:n{11}} &
+    \AnswerGridCell{12}{\__answergrid_get_answer:n{12}} &
+    \AnswerGridCell{13}{\__answergrid_get_answer:n{13}} &
+    \AnswerGridCell{14}{\__answergrid_get_answer:n{14}} &
+    \AnswerGridCell{15}{\__answergrid_get_answer:n{15}} \\ \hline
+
+    \AnswerGridCell{16}{\__answergrid_get_answer:n{16}} &
+    \AnswerGridCell{17}{\__answergrid_get_answer:n{17}} &
+    \AnswerGridCell{18}{\__answergrid_get_answer:n{18}} &
+    \AnswerGridCell{19}{\__answergrid_get_answer:n{19}} &
+    \AnswerGridCell{20}{\__answergrid_get_answer:n{20}} \\ \hline
+  \end{tabular}
+  \end{center}
+}
+
+% ===== 内容付き20マス =====
+% 使い方:
+% \AnswerGridFilled{
+%   {解答1}
+%   {解答2}
+%   ...
+% }
+%
+% 足りない分は空欄
+\NewDocumentCommand{\AnswerGridFilled}{+g}
+{
+  \IfNoValueTF{#1}
+    {
+      \seq_clear:N \l__answergrid_answers_seq
+      \__answergrid_print:
+    }
+    {
+      \__answergrid_set_answers:n {#1}
+      \__answergrid_print:
+    }
+}
+
+% ===== 空欄の20マス =====
+\NewDocumentCommand{\AnswerGrid}{}
+{
+  \seq_clear:N \l__answergrid_answers_seq
+  \__answergrid_print:
+}
+
+\ExplSyntaxOff
